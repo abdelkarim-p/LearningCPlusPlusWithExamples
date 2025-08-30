@@ -1,3 +1,7 @@
+#ifndef POINT_HPP
+
+#define POINT_HPP
+
 #include <cstdint>
 
 class point
@@ -13,7 +17,8 @@ private:
     uint8_t LimitX;
     uint8_t LimitY;
     uint32_t powI(uint8_t x, uint8_t power);
-
+    friend bool testing_point(point  &p, uint8_t x, uint8_t y);
+    friend class testing_point_class;
 public:
 
     point();
@@ -39,3 +44,4 @@ public:
     point operator-(const point& other) const;
     
 };
+#endif

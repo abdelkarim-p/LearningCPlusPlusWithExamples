@@ -1,13 +1,23 @@
 //#include "point\point.hpp"
 #include <cstdio> 
 #include "point.hpp"
-
+#include "unit_test.hpp"
 using namespace std;
+
 
 
 int just_to_exit_later(int x , int y)
 {
     point * p1 = new point();
+    p1->setX(99);
+    p1->setY(49);
+    printf("El friend function deh %d00%% \n", testing_point(*p1, 99, 49));
+
+    testing_point_class testing_point_object(*p1);
+
+    printf("El friend class deh %d00%% \n", testing_point_object.testing_point_class_function(99,49));
+    //printf("El friend class using reference deh %d00%% \n", testing_point_object.testing_point_class_function_using_reference(99,49));
+
     point * p2 = new point(*p1); 
     point * p3 = new point(34, 25);
     point * p4 = new point(200,150,180,132);
@@ -47,12 +57,14 @@ int just_to_exit_later(int z)
 int main() {
 
 
-    just_to_exit_later(5,4.0);
-    just_to_exit_later(5,4.0f);
-    just_to_exit_later(5,4);
-    just_to_exit_later(5);
+    //just_to_exit_later(5,4.0);
+    //just_to_exit_later(5,4.0f);    
+    //just_to_exit_later(5);
 
-    printf("d7k \n");
+
+    just_to_exit_later(5,4);
+
+    
     
     return 0;
 }
