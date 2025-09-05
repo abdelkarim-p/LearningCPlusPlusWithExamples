@@ -21,6 +21,8 @@ private:
     friend class testing_point_class;
 public:
 
+    point(const point &other);
+
     point();
 
     point(const uint8_t x_val, const uint8_t y_val);
@@ -35,13 +37,16 @@ public:
 
     void setY(uint8_t y_val);
 
-    uint8_t getX();
+    uint8_t getX() const;
 
-    uint8_t getY();
+    uint8_t getY() const;
 
     point operator+(const point& other) const;
 
     point operator-(const point& other) const;
-    
+    point& operator-=(const point& other) ;
+    point operator-() const;
+    point operator+() const ;
+    bool operator==(const point&other);
 };
 #endif

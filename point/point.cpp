@@ -1,6 +1,6 @@
 #include <cstdint>
 #include <cassert>
-
+#include <cstdio> 
 #include <cmath>
 
 #include "point.hpp"
@@ -26,9 +26,21 @@ uint32_t point::powI(uint8_t x, uint8_t power)
 
     return ret;
 }
+point::point(const point &other)
+{
+
+    printf(" (point &) constructor called \n");
+    x = other.x;
+    y = other.y;
+
+    LimitX = other.LimitX;
+    LimitY = other.LimitY;
+}
 
 point::point()
 {
+
+    printf(" constructor called \n");
     x = DEFAULT_X;
     y = DEFAULT_Y;
 
@@ -38,6 +50,8 @@ point::point()
 
 point::point(const uint8_t x_val, const uint8_t y_val)
 {
+    printf(" x,y constructor called \n")   ;
+
     x = x_val;
     y = y_val;
 
@@ -47,6 +61,7 @@ point::point(const uint8_t x_val, const uint8_t y_val)
 
 point::point(const uint8_t LimitX, const uint8_t LimitY, const uint8_t x_val, const uint8_t y_val)
 {
+    printf(" 1,2,x,y constructor called \n");
     assert(x_val < LimitX);
     assert(y_val < LimitY);
 
@@ -97,17 +112,30 @@ void point::setY(uint8_t y_val)
     y = y_val;
 }
 
-uint8_t point::getX()
+uint8_t point::getX() const
 {
     return x;
 }
-uint8_t point::getY()
+uint8_t point::getY() const
 {
     return y;
 }
+point point::operator+() const
+{
+    return *this;
+}
+point point::operator-() const
+{
+    point ret;
 
+    ret.x = -x;
+    ret.y = -y; 
+
+    return ret;
+}
 point point::operator+(const point &other) const
 {
+    printf(" + operator called with %d %d \n", other.getX(), other.getY());
     point ret;
 
     ret.x = x + other.x;
@@ -117,10 +145,31 @@ point point::operator+(const point &other) const
 }
 point point::operator-(const point &other) const
 {
+
+    printf(" - operator called with %d %d \n", other.getX(), other.getY());
+
     point ret;
 
-    ret.x = (x > other.x) ? x - other.x : other.x - x;
-    ret.y = (y > other.y) ? y - other.y : other.y - y;
+    ret.x = x - other.x ;
+    ret.y = y - other.y;
 
     return ret;
+}
+// or void ... but use reference to allow chaining
+point& point::operator-=(const point &other) 
+{
+
+    printf(" -= operator called with %d %d \n", other.getX(), other.getY());
+
+    
+    *this = *this - other;
+    // or x = x - other.x;  y = y - other.y;
+
+    return *this;
+}
+
+bool point::operator==(const point&other)
+{
+    printf(" == operator called with %d %d \n", other.getX(), other.getY());
+    return ((x==other.x) && (y == other.y));
 }
