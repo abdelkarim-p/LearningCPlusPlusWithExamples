@@ -6,7 +6,7 @@ using namespace std;
 
 int main() 
 {
-    point x(4, 5);
+    /* point x(4, 5);
     point y(8, 7);
     point z(12,14);
     z = x - y + x;
@@ -23,7 +23,12 @@ int main()
     point m(1,2);
     point s(8,7);
     point d (9,9);
-    printf("%d %d %d %d\n", m==s, s == d, d == m+s, d-s == m-s+s);
+    printf("%d %d %d %d\n", m==s, s == d, d == m+s, d-s == m-s+s); */
+
+    point x(3,4);
+    // double y1 = x; Gives Error!!
+    double y2 = (double)x;
+    printf("%d  %f", int(x), y2);
 
     return 0;
 }

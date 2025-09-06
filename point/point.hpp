@@ -48,5 +48,7 @@ public:
     point operator-() const;
     point operator+() const ;
     bool operator==(const point&other);
+    explicit operator int();
+    explicit operator double();
 };
 #endif

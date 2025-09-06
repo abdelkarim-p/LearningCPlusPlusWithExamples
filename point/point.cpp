@@ -173,3 +173,12 @@ bool point::operator==(const point&other)
     printf(" == operator called with %d %d \n", other.getX(), other.getY());
     return ((x==other.x) && (y == other.y));
 }
+point::operator int()
+{
+    return calcPointsDistance(point(0,0), true);
+}
+point::operator double()
+{
+    return (calcPointsDistance(point(0,0), true) + 0.5);
+    
+}
