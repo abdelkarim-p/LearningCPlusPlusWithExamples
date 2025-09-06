@@ -2,6 +2,8 @@
 #include <cstdio> 
 #include "point.hpp"
 #include "unit_test.hpp"
+#include "single_variable.hpp"
+
 using namespace std;
 
 int main() 
@@ -25,10 +27,12 @@ int main()
     point d (9,9);
     printf("%d %d %d %d\n", m==s, s == d, d == m+s, d-s == m-s+s); */
 
-    point x(3,4);
+    /*point x(3,4);
     // double y1 = x; Gives Error!!
     double y2 = (double)x;
-    printf("%d  %f", int(x), y2);
+    printf("%d  %f", int(x), y2);*/
+    single_for_ever y(3);
+    single_for_ever x = 2 + 3;
 
     return 0;
 }
