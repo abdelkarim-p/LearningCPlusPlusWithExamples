@@ -6,33 +6,24 @@
 
 using namespace std;
 
+void another_function()
+{
+    point x1 {42,32}; // Default Constructor
+    point x2 = x1;
+    //point x2(1,2); // Defined Constructor
+   // point y(x2); point z = x2; // Copy constructor 
+    
+
+    printf("x1: %d , %d \n", x1.getX(), x1.getY());
+    printf("x2: %d , %d \n", x2.getX(), x2.getY());
+    /*printf("y:  %d , %d \n", y.getX(), y.getY());
+    printf("z:  %d , %d \n", z.getX(), z.getY());*/
+}
 int main() 
 {
-    /* point x(4, 5);
-    point y(8, 7);
-    point z(12,14);
-    z = x - y + x;
-    printf(" %d %d \n", z.getX(), z.getY())   ;
-    z = x - (y + (x - y)) + x;
-    printf(" %d %d \n", z.getX(), z.getY())   ;
-    z = -x + y;
-    printf(" %d %d", z.getX(), z.getY())   ;
-    z = +x - y + x;
-    printf(" %d %d \n", z.getX(), z.getY())   ;
-    z -= x + y;
-    printf(" %d %d\n ", z.getX(), z.getY())   ;
+    another_function();
 
-    point m(1,2);
-    point s(8,7);
-    point d (9,9);
-    printf("%d %d %d %d\n", m==s, s == d, d == m+s, d-s == m-s+s); */
-
-    /*point x(3,4);
-    // double y1 = x; Gives Error!!
-    double y2 = (double)x;
-    printf("%d  %f", int(x), y2);*/
-    single_for_ever y(3);
-    single_for_ever x = 2 + 3;
+    printf("returned from another function \n");
 
     return 0;
 }

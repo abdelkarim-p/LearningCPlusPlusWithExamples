@@ -13,23 +13,11 @@
 #define DEFAULT_Y 100
 
 
-uint32_t point::powI(uint8_t x, uint8_t power)
-{
-    if (power == 0)
-        return 1;
 
-    uint32_t ret = x;
-    power--;
-
-    for (; power > 0; power--)
-        ret = x * ret;
-
-    return ret;
-}
-point::point(const point &other)
+/*point::point(const point &other)
 {
 
-    printf(" (point &) constructor called \n");
+    printf(" copy (point &) constructor called \n");
     x = other.x;
     y = other.y;
 
@@ -46,8 +34,15 @@ point::point()
 
     LimitX = DEFAULT_LIMIT_X;
     LimitY = DEFAULT_LIMIT_Y;
+}*/
+point& point::operator=(const point& other)
+{
+    printf(" = operator called with %d %d \n", other.getX(), other.getY());
+    x = other.x;
+    y = other.y; 
+    
+    return (point&)*this;
 }
-
 point::point(const uint8_t x_val, const uint8_t y_val)
 {
     printf(" x,y constructor called \n")   ;
@@ -58,7 +53,7 @@ point::point(const uint8_t x_val, const uint8_t y_val)
     LimitX = DEFAULT_LIMIT_X;
     LimitY = DEFAULT_LIMIT_Y;
 }
-
+/*
 point::point(const uint8_t LimitX, const uint8_t LimitY, const uint8_t x_val, const uint8_t y_val)
 {
     printf(" 1,2,x,y constructor called \n");
@@ -70,7 +65,7 @@ point::point(const uint8_t LimitX, const uint8_t LimitY, const uint8_t x_val, co
 
     this->LimitX = LimitX;
     this->LimitY = LimitY;
-}
+}*/
 
 void point::setPoint(const uint8_t x_val, const uint8_t y_val)
 {
@@ -120,6 +115,21 @@ uint8_t point::getY() const
 {
     return y;
 }
+
+uint32_t powI(uint8_t x, uint8_t power)
+{
+    if (power == 0)
+        return 1;
+
+    uint32_t ret = x;
+    power--;
+
+    for (; power > 0; power--)
+        ret = x * ret;
+
+    return ret;
+}
+
 point point::operator+() const
 {
     return *this;
@@ -182,3 +192,4 @@ point::operator double()
     return (calcPointsDistance(point(0,0), true) + 0.5);
     
 }
+

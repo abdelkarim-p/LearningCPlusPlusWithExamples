@@ -16,18 +16,18 @@ private:
     uint8_t y;
     uint8_t LimitX;
     uint8_t LimitY;
-    uint32_t powI(uint8_t x, uint8_t power);
     friend bool testing_point(point  &p, uint8_t x, uint8_t y);
     friend class testing_point_class;
+   // point(uint8_t x,uint8_t y, uint8_t z);
 public:
 
-    point(const point &other);
+    //point(const point &other);
 
-    point();
+    //point();
 
     point(const uint8_t x_val, const uint8_t y_val);
 
-    point(const uint8_t LimitX, const uint8_t LimitY, const uint8_t x_val, const uint8_t y_val);
+   // point(const uint8_t LimitX, const uint8_t LimitY, const uint8_t x_val, const uint8_t y_val);
 
     void setPoint(const uint8_t x_val, const uint8_t y_val);
 
@@ -48,7 +48,9 @@ public:
     point operator-() const;
     point operator+() const ;
     bool operator==(const point&other);
+    point& operator=(const point& other);
     explicit operator int();
     explicit operator double();
 };
+uint32_t powI(uint8_t x, uint8_t power);
 #endif
